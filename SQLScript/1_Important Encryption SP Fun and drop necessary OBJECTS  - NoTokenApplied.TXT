@@ -112,7 +112,7 @@
 ------------------------------
 USE [master]
 ALTER DATABASE [RAM] SET SINGLE_USER WITH ROLLBACK IMMEDIATE
-RESTORE DATABASE [RAM] FROM  DISK = N'E:\RAMAPI\App_Data\DB.bak' WITH  FILE = 1,  NOUNLOAD,  REPLACE,  STATS = 5
+RESTORE DATABASE [RAM] FROM  DISK = N'C:\TEMP\DB.bak' WITH  FILE = 1,  NOUNLOAD,  REPLACE,  STATS = 5
 ALTER DATABASE [RAM] SET MULTI_USER
 GO
 
@@ -130,24 +130,6 @@ GO
 
 
 
---------------------------------------
----
----  Delete backup file from disk
----
---------------------------------------
--- To allow advanced options to be changed.
-EXEC sp_configure 'show advanced options', 1
-GO
--- To update the currently configured value for advanced options.
-RECONFIGURE
-GO
--- To enable the feature.
-EXEC sp_configure 'xp_cmdshell', 1
-GO
--- To update the currently configured value for this feature.
-RECONFIGURE
-GO
-xp_cmdshell 'del /F /Q F:\RAMAPI\App_Data\DB.*'
 
 
 
@@ -5291,6 +5273,27 @@ GO
 
 
 
+
+
+
+--------------------------------------
+---
+---  Delete backup file from disk
+---
+--------------------------------------
+-- To allow advanced options to be changed.
+EXEC sp_configure 'show advanced options', 1
+GO
+-- To update the currently configured value for advanced options.
+RECONFIGURE
+GO
+-- To enable the feature.
+EXEC sp_configure 'xp_cmdshell', 1
+GO
+-- To update the currently configured value for this feature.
+RECONFIGURE
+GO
+xp_cmdshell 'del /F /Q C:\TEMP\*.*'
 
  
 
