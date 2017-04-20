@@ -1,0 +1,26 @@
+declare @f nvarchar(20) = N'Jeunes';
+SELECT   
+KHPMessages.PK_KHPMessageID as [messageID],  ForumGroups.Description as [Site], Forums.PublicName AS [Topic Catalogue]
+                      			  , replace(replace(convert(nvarchar(max),KHPMessages.Subject1),char(13),' '), char(10),' ') as [Subject1]
+					  , replace(replace(convert(nvarchar(max),KHPMessages.Subject2),char(13),' '), char(10),' ') as [Subject2]
+					  , replace(replace(convert(nvarchar(max),KHPMessages.Message1Text),char(13),' '), char(10),' ') as [Message1Text]
+					  , replace(replace(convert(nvarchar(max),KHPMessages.Message2Text),char(13),' '), char(10),' ') as [Message2Text]
+                      	, KHPMessages.DateCreated
+			, KHPMessages.Author1
+			, KHPMessages.Author2
+					  , replace(replace(convert(nvarchar(max), KHPMessages.MessageComment),char(13),' '), char(10),' ') as [MessageComment]
+			, KHPMessages.LastStatusChangeDate
+                      	, KHPMessages.IsVisible
+			, KHPMessages.ViewCount 
+                      			, replace(replace(convert(nvarchar(max),KHPMessages.Emoticon),char(13),' '), char(10),' ') as [Emoticon]
+                      , KHPMessages.Author1Age
+					  , replace(replace(convert(nvarchar(max),KHPMessages.Author1Province),char(13),' '), char(10),' ') as [Author1Province] 
+                      , KHPMessages.CurrentReviewStartTime
+					  , KHPMessages.ExpiryDate
+FROM         KHPMessages INNER JOIN
+                      Forums ON Forums.PK_ForumID = KHPMessages.FK_ForumID INNER JOIN
+                      ForumGroupMembership ON ForumGroupMembership.FK_ForumID = Forums.PK_ForumID INNER JOIN
+                      ForumGroups ON ForumGroups.PK_ForumGroupID = ForumGroupMembership.FK_ForumGroupID
+WHERE ForumGroups.Description = N'Jeunes'
+order by [Site] , [Topic Catalogue], DateCreated, LastStatusChangeDate
+;
