@@ -9,7 +9,6 @@
         <CreateDeploymentUtility>true</CreateDeploymentUtility>
         <DeploymentOutputPath>c:\TEMP</DeploymentOutputPath>
         <StartObjectID>ETL_RAM.dtsx</StartObjectID>
-        <Run64BitRuntime>true</Run64BitRuntime>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>
