@@ -8,7 +8,7 @@
         <PathOnServer />
         <CreateDeploymentUtility>true</CreateDeploymentUtility>
         <DeploymentOutputPath>c:\TEMP</DeploymentOutputPath>
-        <StartObjectID>ETL_RAM.dtsx</StartObjectID>
+        <StartObjectID>ETL_RAM_Single_Quoto.dtsx</StartObjectID>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>
